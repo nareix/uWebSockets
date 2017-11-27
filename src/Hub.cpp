@@ -124,11 +124,7 @@ bool parseURI(std::string &uri, bool &secure, std::string &hostname, int &port, 
         offset++;
         std::string portStr = uri.substr(offset, uri.find('/', offset) - offset);
         if (portStr.length()) {
-            try {
-                port = stoi(portStr);
-            } catch (...) {
-                return false;
-            }
+            port = stoi(portStr);
         } else {
             return false;
         }

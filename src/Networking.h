@@ -5,10 +5,12 @@
 #define NETWORKING_UWS_H
 
 #include <openssl/opensslv.h>
+/*
 #if OPENSSL_VERSION_NUMBER < 0x10100000L
 #define SSL_CTX_up_ref(x) x->references++
 #define SSL_up_ref(x) x->references++
 #endif
+*/
 
 #ifndef __linux
 #define MSG_NOSIGNAL 0

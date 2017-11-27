@@ -1,0 +1,32 @@
+config("uwebsocket_config") {
+  include_dirs = [ "src" ]
+}
+
+source_set("uwebsocket_sources") {
+  sources = [
+    "src/Epoll.cpp",
+    "src/Extensions.cpp",
+    "src/Group.cpp",
+    "src/HTTPSocket.cpp",
+    "src/Hub.cpp",
+    "src/Networking.cpp",
+    "src/Node.cpp",
+    "src/Socket.cpp",
+    "src/WebSocket.cpp",
+  ]
+  configs += [ ":uwebsocket_config" ]
+  defines = []
+  cflags = [ "-USE_LIBUV", "-Wno-deprecated-declarations" ]
+  public_deps = [
+    "//third_party/zlib",
+    "//third_party/libuv",
+    "//third_party/boringssl",
+  ]
+}
+
+group("uwebsocket") {
+  public_configs = [ ":uwebsocket_config" ]
+  public_deps = [
+    ":uwebsocket_sources",
+  ]
+}
